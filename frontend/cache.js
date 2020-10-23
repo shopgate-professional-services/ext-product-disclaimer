@@ -2,7 +2,7 @@ import LocalStorageCache from './classes/LocalStorageCache';
 import { memoization } from './config';
 
 const cache = new LocalStorageCache(
-  'product.disclaimer',
+  'ps.product.disclaimer',
   memoization.ttl,
   memoization.limit
 );
