@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate-project/product-disclaimer",
+  "components": [
+    {
+      "id": "PopupContent",
+      "path": "frontend/portals/PopupContent",
+      "target": "product.description.after",
+      "type": "portals"
+    }
+  ],
+  "configuration": {
+    "header": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "The header of popup content"
+      }
+    },
+    "content": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Content to show (can be in html format)"
+      }
+    },
+    "cache": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "limit": 100,
+        "ttl": 3600
+      },
+      "params": {
+        "type": "json",
+        "label": "Cache of shown disclaimer (fifo based)"
+      }
+    },
+    "buttons": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": [],
+      "params": {
+        "type": "json",
+        "label": "Buttons to show underneath content"
+      }
+    }
+  },
+  "steps": []
+}
