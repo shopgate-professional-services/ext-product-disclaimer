@@ -28,7 +28,7 @@
         "label": "Content to show (can be in html format)"
       }
     },
-    "cache": {
+    "memoization": {
       "type": "admin",
       "destination": "frontend",
       "default": {

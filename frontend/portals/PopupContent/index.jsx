@@ -4,27 +4,31 @@ import {
   Grid, SheetDrawer, RippleButton, HtmlSanitizer,
 } from '@shopgate/engage/components';
 import { useCurrentProduct } from '@shopgate/engage/core';
-import { content, header, buttons } from '../../config';
+import {
+  content, header, buttons, styles as configStyles,
+} from '../../config';
 import cache from '../../cache';
 
 const styles = {
   grid: css({
     flexDirection: 'column',
-    height: '100vh',
+    height: 'calc(100vh - 56px - var(--safe-area-inset-top))',
   }).toString(),
   content: css({
     padding: '1rem',
     overflowY: 'scroll',
-  }).toString(),
+  }, configStyles.content).toString(),
   buttons: css({
     marginTop: '1rem',
   }).toString(),
   button: css({
-    width: '100%',
-    marginBottom: '0.25rem',
-    textTransform: 'none',
-    fontWeight: 'normal',
-  }).toString(),
+    '&&': {
+      width: '100%',
+      marginBottom: '0.25rem',
+      textTransform: 'none',
+      fontWeight: 'normal',
+    },
+  }, configStyles.button).toString(),
 };
 
 /**

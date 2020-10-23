@@ -1,10 +1,10 @@
 import LocalStorageCache from './classes/LocalStorageCache';
-import { cache as cacheConfig } from './config';
+import { memoization } from './config';
 
 const cache = new LocalStorageCache(
   'product.disclaimer',
-  cacheConfig.ttl,
-  cacheConfig.limit
+  memoization.ttl,
+  memoization.limit
 );
 
 /**
