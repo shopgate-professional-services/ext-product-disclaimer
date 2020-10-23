@@ -24,7 +24,7 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
 ```json
 {
   "triggerProperty": {
-    "name": "Overlay",
+    "name": "overlay",
     "value": "yes"
   },
   "header": "Important product disclaimer",
