@@ -23,8 +23,8 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
   "header": "Important product disclaimer",
   "content": "<div>Content in HTML format</div>",
   "cache": {
-    "limit": 100,
-    "ttl": 3600
+    "limit": 200,
+    "ttl": 7776000
   },
   "buttons": [
     {
