@@ -10,6 +10,18 @@
     }
   ],
   "configuration": {
+    "triggerProperty": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "name": "overlay",
+        "value": "yes"
+      },
+      "params": {
+        "type": "json",
+        "label": "Product property to trigger show of disclaimer"
+      }
+    },
     "header": {
       "type": "admin",
       "destination": "frontend",
@@ -43,12 +55,24 @@
     "buttons": {
       "type": "admin",
       "destination": "frontend",
-      "default": [],
+      "default": [ ],
       "params": {
         "type": "json",
         "label": "Buttons to show underneath content"
       }
+    },
+    "styles": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": {
+        "content": null,
+        "button": null
+      },
+      "params": {
+        "type": "json",
+        "label": "Styles to apply to content and buttons"
+      }
     }
   },
-  "steps": []
+  "steps": [ ]
 }

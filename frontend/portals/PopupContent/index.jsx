@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { css } from 'glamor';
 import {
   Grid, SheetDrawer, RippleButton, HtmlSanitizer,
 } from '@shopgate/engage/components';
-import { useCurrentProduct } from '@shopgate/engage/core';
+import { withCurrentProduct } from '@shopgate/engage/core';
 import {
   content, header, buttons, styles as configStyles,
 } from '../../config';
 import cache from '../../cache';
+import { isShownForProduct as isShownForProductSelector } from '../../selectors';
 
 const styles = {
   grid: css({
@@ -34,15 +37,14 @@ const styles = {
 /**
  * @return {React.Element}
  */
-const PopupContent = () => {
-  const { productId } = useCurrentProduct();
+const PopupContent = ({ isShownForProduct, productId }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (content && !cache.hasValidItem(productId)) {
+    if (content && !cache.hasValidItem(productId) && isShownForProduct) {
       setTimeout(() => setVisible(true), 750);
     }
-  }, [productId]);
+  }, [productId, isShownForProduct]);
   useEffect(() => {
     if (visible) {
       cache.setItem(productId);
@@ -66,7 +68,7 @@ const PopupContent = () => {
           </HtmlSanitizer>
         </Grid.Item>
         <Grid.Item shrink={0} className={styles.buttons}>
-          {buttons.map(button => (
+          {buttons && !!buttons.length && buttons.map(button => (
             <RippleButton
               type="primary"
               className={styles.button}
@@ -82,4 +84,23 @@ const PopupContent = () => {
   );
 };
 
-export default PopupContent;
+PopupContent.propTypes = {
+  isShownForProduct: PropTypes.bool,
+  productId: PropTypes.string,
+};
+
+PopupContent.defaultProps = {
+  isShownForProduct: false,
+  productId: null,
+};
+
+/**
+ * @param {Object} state .
+ * @param {string} productId .
+ * @return {{isShownForProduct: any}}
+ */
+const connector = connect((state, { productId }) => ({
+  isShownForProduct: isShownForProductSelector(state, { productId }),
+}));
+
+export default withCurrentProduct(connector(PopupContent));
