@@ -32,8 +32,8 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
-        "limit": 100,
-        "ttl": 3600
+        "limit": 200,
+        "ttl": 7776000
       },
       "params": {
         "type": "json",

@@ -7,7 +7,7 @@ class LocalStorageCache {
    * @param {number} ttlSec .
    * @param {number} limit .
    */
-  constructor(name, ttlSec = 3600, limit = 100) {
+  constructor(name, ttlSec = 7776000, limit = 200) {
     this.key = name;
     this.ttlSec = ttlSec;
     this.limit = limit;
