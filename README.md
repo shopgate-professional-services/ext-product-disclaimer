@@ -6,6 +6,9 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
 
 ## Configuration
 
+- `triggerProperty` (json): The product property to trigger showing a disclaimer
+    - `name` (string): property name
+    - `value` (string): property value
 - `header` (string): The header of popup content
 - `content` (string): Content to show (can be in html format)
 - `memoization` (json): Memoization options of shown disclaimer (fifo based)
@@ -20,6 +23,10 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
 
 ```json
 {
+  "triggerProperty": {
+    "name": "overlay",
+    "value": "yes"
+  },
   "header": "Important product disclaimer",
   "content": "<div>Content in HTML format</div>",
   "cache": {
@@ -43,10 +50,11 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
     }
   }
 }
-
 ```
 
-
+## Dependencies
+- @shopgate/products-properties
+    - `addProperties` Add the product property that is configured to trigger product disclaimer.
 
 ## About Shopgate
 
