@@ -53,7 +53,7 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
 ```
 
 ## Dependencies
-- @shopgate/products-properties
+- @shopgate-project/products-properties
     - `addProperties` Add the product property that is configured to trigger product disclaimer.
 
 ## About Shopgate
