@@ -6,6 +6,7 @@ import {
   Grid, SheetDrawer, RippleButton, HtmlSanitizer,
 } from '@shopgate/engage/components';
 import { withCurrentProduct } from '@shopgate/engage/core';
+import { themeConfig } from '@shopgate/engage';
 import {
   content, header, buttons, styles as configStyles,
 } from '../../config';
@@ -13,24 +14,41 @@ import cache from '../../cache';
 import { isShownForProduct as isShownForProductSelector } from '../../selectors';
 
 const styles = {
+  sheet: css({
+    height: 'calc(100vh - var(--safe-area-inset-top))',
+    minHeight: 'calc(100vh - var(--safe-area-inset-top))',
+    maxHeight: 'calc(100vh - var(--safe-area-inset-top))',
+  }).toString(),
   grid: css({
     flexDirection: 'column',
-    height: 'calc(100vh - 56px - var(--safe-area-inset-top))',
+    height: '100%',
   }).toString(),
+  header: css({
+    fontWeight: 500,
+    padding: '0.5rem 1rem',
+    boxShadow: '0px 0.5rem 0.5rem rgba(0, 0, 0, 0.12)',
+  }, configStyles.header).toString(),
   content: css({
-    padding: '1rem',
+    padding: '1.5rem 1rem 1rem',
     overflowY: 'scroll',
   }, configStyles.content).toString(),
   buttons: css({
+    padding: '0 1rem',
     marginTop: '1rem',
-  }).toString(),
+  }, configStyles.buttons).toString(),
   button: css({
     '&&': {
       width: '100%',
       marginBottom: '0.25rem',
       textTransform: 'none',
+      fontSize: '0.85rem',
       fontWeight: 'normal',
+      color: themeConfig.colors.ctaContrast,
+      background: themeConfig.colors.cta,
     },
+  }, configStyles.button).toString(),
+  buttonRippleClassName: css({
+    padding: '0 0.25rem',
   }, configStyles.button).toString(),
 };
 
@@ -60,8 +78,17 @@ const PopupContent = ({ isShownForProduct, productId }) => {
   }
 
   return (
-    <SheetDrawer title={header} isOpen onClose={close}>
+    <SheetDrawer
+      isOpen
+      className={styles.sheet}
+      contentClassName={styles.sheet}
+    >
       <Grid className={styles.grid}>
+        {header && (
+          <Grid.Item shrink={0} className={styles.header}>
+            {header}
+          </Grid.Item>
+        )}
         <Grid.Item grow={1} className={styles.content}>
           <HtmlSanitizer>
             {content}
@@ -70,8 +97,9 @@ const PopupContent = ({ isShownForProduct, productId }) => {
         <Grid.Item shrink={0} className={styles.buttons}>
           {buttons && !!buttons.length && buttons.map(button => (
             <RippleButton
-              type="primary"
+              type="secondary"
               className={styles.button}
+              rippleClassName={styles.buttonRippleClassName}
               key={button.label}
               onClick={close}
             >

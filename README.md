@@ -2,7 +2,7 @@
 
 This extension provide a memoized popup content for product details page.
 
-You can also see a [demo](./demo/pdp.png) of popup disclaimer
+You can also see a [demo](./demo/pdp.jpg) of popup disclaimer
 
 ## Configuration
 
@@ -16,7 +16,9 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
     - `ttl` (number): time life (in sec) to memoize shown disclaimer
 - `buttons` (json): Buttons to show underneath content
 - `styles` (json): Styles for content and buttons (glamor)
+    - `header` (json): styles of header
     - `content` (json): styles of content
+    - `buttons` (json): style for buttons wrapper
     - `button` (json): style for single button
 
 ## Example Configuration
@@ -42,6 +44,9 @@ You can also see a [demo](./demo/pdp.png) of popup disclaimer
     }
   ],
   "styles": {
+    "header": {
+        "fontSize": "1.5rem"
+      },
     "content": {
       "fontSize": "0.85rem"
     },

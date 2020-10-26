@@ -65,7 +65,9 @@
       "type": "admin",
       "destination": "frontend",
       "default": {
+        "header": null,
         "content": null,
+        "buttons": null,
         "button": null
       },
       "params": {
